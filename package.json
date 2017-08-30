@@ -25,11 +25,13 @@
     "start-server": "babel-node src/server/server.js",
     "start-dev-server": "webpack-dev-server --config webpack-dev.config.js",
     "test": "mocha --opts test/mocha.opts --compilers js:babel-core/register test",
-    "test:watch": "nodemon --watch test/ --watch src/ --ext js,jsx --exec \"npm --silent run test\""
+    "test:watch": "nodemon --watch test/ --watch src/ --ext js,jsx --exec \"npm --silent run test\"",
+    "webpack:prod": "webpack --config webpack-prod.config.js"
   },
   "author": "Telia Norge",
   "license": "ISC",
   "devDependencies": {
+    "babel-preset-env": "^1.6.0",
     "base64-inline-loader": "^1.x",
     "chai": "^4.0.2",
     "css-loader": "^0.28.4",

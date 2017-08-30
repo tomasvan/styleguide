@@ -15,12 +15,19 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                use: ['babel-loader'],
-                exclude: /node_modules/,
-                /*
-                options: {
-                    presets: ['es2015']
-                }*/
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['env', {
+                                targets: { browsers: 'ie >= 11, last 2 versions' },
+                                modules: false
+                            }],
+                            "react"
+                        ]
+                    }
+                }],
+                exclude: /node_modules/
             }
         ],
     },
