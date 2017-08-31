@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const browsers = 'ie >= 11, last 2 versions';
+
 module.exports = {
     context: path.resolve(__dirname, 'src/client'),
     entry: [
@@ -31,8 +33,23 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                use: ['babel-loader',],
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                use: [
+                  {
+                      loader: 'babel-loader',
+                      options: {
+                          presets: [
+                            ['env', {
+                              targets: {
+                                  browsers
+                              },
+                              modules: false
+                            }],
+                            'react'
+                          ]
+                      }
+                  }
+                ]
             },
             {
                 test: /\.pcss$/,
