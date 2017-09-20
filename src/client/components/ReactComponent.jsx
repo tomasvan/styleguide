@@ -8,6 +8,7 @@ import Tabs from 'react-simpletabs';
 import * as ReactComponents from '../../components/index';
 import CodeSnippet from './CodeSnippet';
 import Heading from '../../components/atoms/Heading/Heading';
+import PropertyEditor from '../containers/PropertyEditor';
 
 import { extractComponentNameFromPath } from '../utils/componentUtil';
 
@@ -36,13 +37,19 @@ const ReactComponent = ({ path, metadata }) => {
                     <ComponentToRender {...example.props} />;
 
                 const markupString = pretty(ReactDOMServer.renderToStaticMarkup(componentWithProps));
+
                 return (
                     <div key={i} className="sg-component__example">
                         <Heading level={3} text={example.name} />
                         <Tabs>
                             <Tabs.Panel title="Example">
                                 <div className="inner-content">
-                                    {componentWithProps}
+                                    <PropertyEditor
+                                        componentPath={`${example.name}-${path}`}
+                                        component={ComponentToRender}
+                                        exampleProps={example.props}
+                                        propertyDefinitions={metadata.props}
+                                    />
                                 </div>
                             </Tabs.Panel>
                             <Tabs.Panel title="HTML">

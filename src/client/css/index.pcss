@@ -100,3 +100,27 @@ body {
         border: 1px solid var(--dark-grey);
     }
 }
+
+.sg-props {
+
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+
+        > * {
+            margin: 10px;
+        }
+    }
+}
+
+.sg-prop-field {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    &__description {
+        margin-left: 15px;
+    }
+}
